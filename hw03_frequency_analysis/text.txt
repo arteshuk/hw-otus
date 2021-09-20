@@ -1,0 +1,1097 @@
+https://golangdocs.com/split-string-in-golang
+
+Skip to content
+Godocs
+Home
+About Us
+Contact Us
+Privacy Policy
+5 Different Ways to Split String in GoLang
+
+String splitting is a task that is needed when we want to manipulate strings. When data comes in a long string, we may need to split it into the required pieces. One of the very common use case is splitting a CSV string into different values based on the delimiter. In this post, we will see what are the ways of splitting strings in Go.
+
+GoLang Split string using the separator functions
+There are many ways to split strings by a specific separator function in Go. Below are some of the easy ways of doing string splitting in GoLang.
+
+1. Split String using the split() function
+The strings package contains a function called split(), which can be used to split string efficiently. The method usage is shown below.
+
+
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {		
+	s := "This,is,a,delimited,string"
+	v := strings.Split(s, ",")	
+	fmt.Println(v)     // [This is a delimited string]
+}
+2. GoLang String Splitting using the SplitN function
+The SplitN function of the string package takes three arguments. The main string, the separator, and the number of strings that will be created. Below we can see examples using that string SplitN function.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {		
+	s := "This.is.a.delimited.string"
+	v := strings.SplitN(s, ".", 5)	
+	fmt.Println(v)     // [This is a delimited string]
+} 
+3. String split using whitespace
+There is a function called Fields which will return a slice after separating using the whitespace. Here it is in action.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {		
+	s := "This is a string containing whitespaces"
+	v := strings.Fields(s)
+	fmt.Println(v)     // [This is a string containing whitespaces]
+}
+4. String Split without Removing Delimiters
+The SplitAfter function can be used to retain the delimiters instead of removing them. Here is an example showing how to use that function.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {		
+	s := "String,with,delimiters."
+	v := strings.SplitAfter(s, ",") // It doesn't removes delimiters when splitting
+	fmt.Println(v)     // [String, with, delimiters.]
+} 
+It can also be used to generate a slice of individual characters from a string, here is how.
+
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {		
+	s := "averylargeword"
+	v := strings.SplitAfter(s, "")
+	fmt.Println(v)     // [a v e r y l a r g e w o r d]
+} 
+5. String split using the regexp
+Regular expressions can be used to split the string using the pattern of the delimiters. Here is an example of how one would go about it.
+
+package main
+
+import (
+	"fmt"
+	//"strings"
+	"regexp"
+)
+
+func main() {		
+	s := "xyzxyzxyzxyzxyz"
+	
+	t := regexp.MustCompile(`[y]`)  // backticks are used here to contain the expression
+	
+	v := t.Split(s, -1)             // second arg -1 means no limits for the number of substrings
+	fmt.Println(v)     // [x zx zx zx zx z]
+} 
+These are some of the best ways to split a string in Go programming language.
+
+
+Post navigation
+← Previous Post
+Next Post →
+Search for:
+Search …
+
+Recent Posts
+GoLang Byte Array to String
+Golang int64 to string conversion
+What is rune in GoLang?
+Golang – Using Gorilla Websockets
+Makefiles with Go
+Golang – Read JSON File
+Golang – Create your own Slack Bot
+Golang – Iterate over a map
+Golang reflect package
+Unary gRPC with Golang – Part 2
+Favorite Sites
+AskPython
+CodeForGeek
+JournalDev
+LinuxForDevices
+
+Copyright © 2021 · GoLang Docs · GoLangDocs is part of JournalDev IT Services Private Limited
+
+Skip to content
+Godocs
+Home
+About Us
+Contact Us
+Privacy Policy
+5 Different Ways to Split String in GoLang
+
+String splitting is a task that is needed when we want to manipulate strings. When data comes in a long string, we may need to split it into the required pieces. One of the very common use case is splitting a CSV string into different values based on the delimiter. In this post, we will see what are the ways of splitting strings in Go.
+
+GoLang Split string using the separator functions
+There are many ways to split strings by a specific separator function in Go. Below are some of the easy ways of doing string splitting in GoLang.
+
+1. Split String using the split() function
+The strings package contains a function called split(), which can be used to split string efficiently. The method usage is shown below.
+
+
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This,is,a,delimited,string"
+	v := strings.Split(s, ",")
+	fmt.Println(v)     // [This is a delimited string]
+}
+2. GoLang String Splitting using the SplitN function
+The SplitN function of the string package takes three arguments. The main string, the separator, and the number of strings that will be created. Below we can see examples using that string SplitN function.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This.is.a.delimited.string"
+	v := strings.SplitN(s, ".", 5)
+	fmt.Println(v)     // [This is a delimited string]
+}
+3. String split using whitespace
+There is a function called Fields which will return a slice after separating using the whitespace. Here it is in action.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This is a string containing whitespaces"
+	v := strings.Fields(s)
+	fmt.Println(v)     // [This is a string containing whitespaces]
+}
+4. String Split without Removing Delimiters
+The SplitAfter function can be used to retain the delimiters instead of removing them. Here is an example showing how to use that function.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "String,with,delimiters."
+	v := strings.SplitAfter(s, ",") // It doesn't removes delimiters when splitting
+	fmt.Println(v)     // [String, with, delimiters.]
+}
+It can also be used to generate a slice of individual characters from a string, here is how.
+
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "averylargeword"
+	v := strings.SplitAfter(s, "")
+	fmt.Println(v)     // [a v e r y l a r g e w o r d]
+}
+5. String split using the regexp
+Regular expressions can be used to split the string using the pattern of the delimiters. Here is an example of how one would go about it.
+
+package main
+
+import (
+	"fmt"
+	//"strings"
+	"regexp"
+)
+
+func main() {
+	s := "xyzxyzxyzxyzxyz"
+
+	t := regexp.MustCompile(`[y]`)  // backticks are used here to contain the expression
+
+	v := t.Split(s, -1)             // second arg -1 means no limits for the number of substrings
+	fmt.Println(v)     // [x zx zx zx zx z]
+}
+These are some of the best ways to split a string in Go programming language.
+
+
+Post navigation
+← Previous Post
+Next Post →
+Search for:
+Search …
+
+Recent Posts
+GoLang Byte Array to String
+Golang int64 to string conversion
+What is rune in GoLang?
+Golang – Using Gorilla Websockets
+Makefiles with Go
+Golang – Read JSON File
+Golang – Create your own Slack Bot
+Golang – Iterate over a map
+Golang reflect package
+Unary gRPC with Golang – Part 2
+Favorite Sites
+AskPython
+CodeForGeek
+JournalDev
+LinuxForDevices
+
+Copyright © 2021 · GoLang Docs · GoLangDocs is part of JournalDev IT Services Private Limited
+
+Skip to content
+Godocs
+Home
+About Us
+Contact Us
+Privacy Policy
+5 Different Ways to Split String in GoLang
+
+String splitting is a task that is needed when we want to manipulate strings. When data comes in a long string, we may need to split it into the required pieces. One of the very common use case is splitting a CSV string into different values based on the delimiter. In this post, we will see what are the ways of splitting strings in Go.
+
+GoLang Split string using the separator functions
+There are many ways to split strings by a specific separator function in Go. Below are some of the easy ways of doing string splitting in GoLang.
+
+1. Split String using the split() function
+The strings package contains a function called split(), which can be used to split string efficiently. The method usage is shown below.
+
+
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This,is,a,delimited,string"
+	v := strings.Split(s, ",")
+	fmt.Println(v)     // [This is a delimited string]
+}
+2. GoLang String Splitting using the SplitN function
+The SplitN function of the string package takes three arguments. The main string, the separator, and the number of strings that will be created. Below we can see examples using that string SplitN function.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This.is.a.delimited.string"
+	v := strings.SplitN(s, ".", 5)
+	fmt.Println(v)     // [This is a delimited string]
+}
+3. String split using whitespace
+There is a function called Fields which will return a slice after separating using the whitespace. Here it is in action.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This is a string containing whitespaces"
+	v := strings.Fields(s)
+	fmt.Println(v)     // [This is a string containing whitespaces]
+}
+4. String Split without Removing Delimiters
+The SplitAfter function can be used to retain the delimiters instead of removing them. Here is an example showing how to use that function.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "String,with,delimiters."
+	v := strings.SplitAfter(s, ",") // It doesn't removes delimiters when splitting
+	fmt.Println(v)     // [String, with, delimiters.]
+}
+It can also be used to generate a slice of individual characters from a string, here is how.
+
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "averylargeword"
+	v := strings.SplitAfter(s, "")
+	fmt.Println(v)     // [a v e r y l a r g e w o r d]
+}
+5. String split using the regexp
+Regular expressions can be used to split the string using the pattern of the delimiters. Here is an example of how one would go about it.
+
+package main
+
+import (
+	"fmt"
+	//"strings"
+	"regexp"
+)
+
+func main() {
+	s := "xyzxyzxyzxyzxyz"
+
+	t := regexp.MustCompile(`[y]`)  // backticks are used here to contain the expression
+
+	v := t.Split(s, -1)             // second arg -1 means no limits for the number of substrings
+	fmt.Println(v)     // [x zx zx zx zx z]
+}
+These are some of the best ways to split a string in Go programming language.
+
+
+Post navigation
+← Previous Post
+Next Post →
+Search for:
+Search …
+
+Recent Posts
+GoLang Byte Array to String
+Golang int64 to string conversion
+What is rune in GoLang?
+Golang – Using Gorilla Websockets
+Makefiles with Go
+Golang – Read JSON File
+Golang – Create your own Slack Bot
+Golang – Iterate over a map
+Golang reflect package
+Unary gRPC with Golang – Part 2
+Favorite Sites
+AskPython
+CodeForGeek
+JournalDev
+LinuxForDevices
+
+Copyright © 2021 · GoLang Docs · GoLangDocs is part of JournalDev IT Services Private Limited
+
+Skip to content
+Godocs
+Home
+About Us
+Contact Us
+Privacy Policy
+5 Different Ways to Split String in GoLang
+
+String splitting is a task that is needed when we want to manipulate strings. When data comes in a long string, we may need to split it into the required pieces. One of the very common use case is splitting a CSV string into different values based on the delimiter. In this post, we will see what are the ways of splitting strings in Go.
+
+GoLang Split string using the separator functions
+There are many ways to split strings by a specific separator function in Go. Below are some of the easy ways of doing string splitting in GoLang.
+
+1. Split String using the split() function
+The strings package contains a function called split(), which can be used to split string efficiently. The method usage is shown below.
+
+
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This,is,a,delimited,string"
+	v := strings.Split(s, ",")
+	fmt.Println(v)     // [This is a delimited string]
+}
+2. GoLang String Splitting using the SplitN function
+The SplitN function of the string package takes three arguments. The main string, the separator, and the number of strings that will be created. Below we can see examples using that string SplitN function.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This.is.a.delimited.string"
+	v := strings.SplitN(s, ".", 5)
+	fmt.Println(v)     // [This is a delimited string]
+}
+3. String split using whitespace
+There is a function called Fields which will return a slice after separating using the whitespace. Here it is in action.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This is a string containing whitespaces"
+	v := strings.Fields(s)
+	fmt.Println(v)     // [This is a string containing whitespaces]
+}
+4. String Split without Removing Delimiters
+The SplitAfter function can be used to retain the delimiters instead of removing them. Here is an example showing how to use that function.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "String,with,delimiters."
+	v := strings.SplitAfter(s, ",") // It doesn't removes delimiters when splitting
+	fmt.Println(v)     // [String, with, delimiters.]
+}
+It can also be used to generate a slice of individual characters from a string, here is how.
+
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "averylargeword"
+	v := strings.SplitAfter(s, "")
+	fmt.Println(v)     // [a v e r y l a r g e w o r d]
+}
+5. String split using the regexp
+Regular expressions can be used to split the string using the pattern of the delimiters. Here is an example of how one would go about it.
+
+package main
+
+import (
+	"fmt"
+	//"strings"
+	"regexp"
+)
+
+func main() {
+	s := "xyzxyzxyzxyzxyz"
+
+	t := regexp.MustCompile(`[y]`)  // backticks are used here to contain the expression
+
+	v := t.Split(s, -1)             // second arg -1 means no limits for the number of substrings
+	fmt.Println(v)     // [x zx zx zx zx z]
+}
+These are some of the best ways to split a string in Go programming language.
+
+
+Post navigation
+← Previous Post
+Next Post →
+Search for:
+Search …
+
+Recent Posts
+GoLang Byte Array to String
+Golang int64 to string conversion
+What is rune in GoLang?
+Golang – Using Gorilla Websockets
+Makefiles with Go
+Golang – Read JSON File
+Golang – Create your own Slack Bot
+Golang – Iterate over a map
+Golang reflect package
+Unary gRPC with Golang – Part 2
+Favorite Sites
+AskPython
+CodeForGeek
+JournalDev
+LinuxForDevices
+
+Copyright © 2021 · GoLang Docs · GoLangDocs is part of JournalDev IT Services Private Limited
+
+Skip to content
+Godocs
+Home
+About Us
+Contact Us
+Privacy Policy
+5 Different Ways to Split String in GoLang
+
+String splitting is a task that is needed when we want to manipulate strings. When data comes in a long string, we may need to split it into the required pieces. One of the very common use case is splitting a CSV string into different values based on the delimiter. In this post, we will see what are the ways of splitting strings in Go.
+
+GoLang Split string using the separator functions
+There are many ways to split strings by a specific separator function in Go. Below are some of the easy ways of doing string splitting in GoLang.
+
+1. Split String using the split() function
+The strings package contains a function called split(), which can be used to split string efficiently. The method usage is shown below.
+
+
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This,is,a,delimited,string"
+	v := strings.Split(s, ",")
+	fmt.Println(v)     // [This is a delimited string]
+}
+2. GoLang String Splitting using the SplitN function
+The SplitN function of the string package takes three arguments. The main string, the separator, and the number of strings that will be created. Below we can see examples using that string SplitN function.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This.is.a.delimited.string"
+	v := strings.SplitN(s, ".", 5)
+	fmt.Println(v)     // [This is a delimited string]
+}
+3. String split using whitespace
+There is a function called Fields which will return a slice after separating using the whitespace. Here it is in action.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This is a string containing whitespaces"
+	v := strings.Fields(s)
+	fmt.Println(v)     // [This is a string containing whitespaces]
+}
+4. String Split without Removing Delimiters
+The SplitAfter function can be used to retain the delimiters instead of removing them. Here is an example showing how to use that function.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "String,with,delimiters."
+	v := strings.SplitAfter(s, ",") // It doesn't removes delimiters when splitting
+	fmt.Println(v)     // [String, with, delimiters.]
+}
+It can also be used to generate a slice of individual characters from a string, here is how.
+
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "averylargeword"
+	v := strings.SplitAfter(s, "")
+	fmt.Println(v)     // [a v e r y l a r g e w o r d]
+}
+5. String split using the regexp
+Regular expressions can be used to split the string using the pattern of the delimiters. Here is an example of how one would go about it.
+
+package main
+
+import (
+	"fmt"
+	//"strings"
+	"regexp"
+)
+
+func main() {
+	s := "xyzxyzxyzxyzxyz"
+
+	t := regexp.MustCompile(`[y]`)  // backticks are used here to contain the expression
+
+	v := t.Split(s, -1)             // second arg -1 means no limits for the number of substrings
+	fmt.Println(v)     // [x zx zx zx zx z]
+}
+These are some of the best ways to split a string in Go programming language.
+
+
+Post navigation
+← Previous Post
+Next Post →
+Search for:
+Search …
+
+Recent Posts
+GoLang Byte Array to String
+Golang int64 to string conversion
+What is rune in GoLang?
+Golang – Using Gorilla Websockets
+Makefiles with Go
+Golang – Read JSON File
+Golang – Create your own Slack Bot
+Golang – Iterate over a map
+Golang reflect package
+Unary gRPC with Golang – Part 2
+Favorite Sites
+AskPython
+CodeForGeek
+JournalDev
+LinuxForDevices
+
+Copyright © 2021 · GoLang Docs · GoLangDocs is part of JournalDev IT Services Private Limited
+
+Skip to content
+Godocs
+Home
+About Us
+Contact Us
+Privacy Policy
+5 Different Ways to Split String in GoLang
+
+String splitting is a task that is needed when we want to manipulate strings. When data comes in a long string, we may need to split it into the required pieces. One of the very common use case is splitting a CSV string into different values based on the delimiter. In this post, we will see what are the ways of splitting strings in Go.
+
+GoLang Split string using the separator functions
+There are many ways to split strings by a specific separator function in Go. Below are some of the easy ways of doing string splitting in GoLang.
+
+1. Split String using the split() function
+The strings package contains a function called split(), which can be used to split string efficiently. The method usage is shown below.
+
+
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This,is,a,delimited,string"
+	v := strings.Split(s, ",")
+	fmt.Println(v)     // [This is a delimited string]
+}
+2. GoLang String Splitting using the SplitN function
+The SplitN function of the string package takes three arguments. The main string, the separator, and the number of strings that will be created. Below we can see examples using that string SplitN function.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This.is.a.delimited.string"
+	v := strings.SplitN(s, ".", 5)
+	fmt.Println(v)     // [This is a delimited string]
+}
+3. String split using whitespace
+There is a function called Fields which will return a slice after separating using the whitespace. Here it is in action.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This is a string containing whitespaces"
+	v := strings.Fields(s)
+	fmt.Println(v)     // [This is a string containing whitespaces]
+}
+4. String Split without Removing Delimiters
+The SplitAfter function can be used to retain the delimiters instead of removing them. Here is an example showing how to use that function.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "String,with,delimiters."
+	v := strings.SplitAfter(s, ",") // It doesn't removes delimiters when splitting
+	fmt.Println(v)     // [String, with, delimiters.]
+}
+It can also be used to generate a slice of individual characters from a string, here is how.
+
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "averylargeword"
+	v := strings.SplitAfter(s, "")
+	fmt.Println(v)     // [a v e r y l a r g e w o r d]
+}
+5. String split using the regexp
+Regular expressions can be used to split the string using the pattern of the delimiters. Here is an example of how one would go about it.
+
+package main
+
+import (
+	"fmt"
+	//"strings"
+	"regexp"
+)
+
+func main() {
+	s := "xyzxyzxyzxyzxyz"
+
+	t := regexp.MustCompile(`[y]`)  // backticks are used here to contain the expression
+
+	v := t.Split(s, -1)             // second arg -1 means no limits for the number of substrings
+	fmt.Println(v)     // [x zx zx zx zx z]
+}
+These are some of the best ways to split a string in Go programming language.
+
+
+Post navigation
+← Previous Post
+Next Post →
+Search for:
+Search …
+
+Recent Posts
+GoLang Byte Array to String
+Golang int64 to string conversion
+What is rune in GoLang?
+Golang – Using Gorilla Websockets
+Makefiles with Go
+Golang – Read JSON File
+Golang – Create your own Slack Bot
+Golang – Iterate over a map
+Golang reflect package
+Unary gRPC with Golang – Part 2
+Favorite Sites
+AskPython
+CodeForGeek
+JournalDev
+LinuxForDevices
+
+Copyright © 2021 · GoLang Docs · GoLangDocs is part of JournalDev IT Services Private Limited
+
+Skip to content
+Godocs
+Home
+About Us
+Contact Us
+Privacy Policy
+5 Different Ways to Split String in GoLang
+
+String splitting is a task that is needed when we want to manipulate strings. When data comes in a long string, we may need to split it into the required pieces. One of the very common use case is splitting a CSV string into different values based on the delimiter. In this post, we will see what are the ways of splitting strings in Go.
+
+GoLang Split string using the separator functions
+There are many ways to split strings by a specific separator function in Go. Below are some of the easy ways of doing string splitting in GoLang.
+
+1. Split String using the split() function
+The strings package contains a function called split(), which can be used to split string efficiently. The method usage is shown below.
+
+
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This,is,a,delimited,string"
+	v := strings.Split(s, ",")
+	fmt.Println(v)     // [This is a delimited string]
+}
+2. GoLang String Splitting using the SplitN function
+The SplitN function of the string package takes three arguments. The main string, the separator, and the number of strings that will be created. Below we can see examples using that string SplitN function.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This.is.a.delimited.string"
+	v := strings.SplitN(s, ".", 5)
+	fmt.Println(v)     // [This is a delimited string]
+}
+3. String split using whitespace
+There is a function called Fields which will return a slice after separating using the whitespace. Here it is in action.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This is a string containing whitespaces"
+	v := strings.Fields(s)
+	fmt.Println(v)     // [This is a string containing whitespaces]
+}
+4. String Split without Removing Delimiters
+The SplitAfter function can be used to retain the delimiters instead of removing them. Here is an example showing how to use that function.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "String,with,delimiters."
+	v := strings.SplitAfter(s, ",") // It doesn't removes delimiters when splitting
+	fmt.Println(v)     // [String, with, delimiters.]
+}
+It can also be used to generate a slice of individual characters from a string, here is how.
+
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "averylargeword"
+	v := strings.SplitAfter(s, "")
+	fmt.Println(v)     // [a v e r y l a r g e w o r d]
+}
+5. String split using the regexp
+Regular expressions can be used to split the string using the pattern of the delimiters. Here is an example of how one would go about it.
+
+package main
+
+import (
+	"fmt"
+	//"strings"
+	"regexp"
+)
+
+func main() {
+	s := "xyzxyzxyzxyzxyz"
+
+	t := regexp.MustCompile(`[y]`)  // backticks are used here to contain the expression
+
+	v := t.Split(s, -1)             // second arg -1 means no limits for the number of substrings
+	fmt.Println(v)     // [x zx zx zx zx z]
+}
+These are some of the best ways to split a string in Go programming language.
+
+
+Post navigation
+← Previous Post
+Next Post →
+Search for:
+Search …
+
+Recent Posts
+GoLang Byte Array to String
+Golang int64 to string conversion
+What is rune in GoLang?
+Golang – Using Gorilla Websockets
+Makefiles with Go
+Golang – Read JSON File
+Golang – Create your own Slack Bot
+Golang – Iterate over a map
+Golang reflect package
+Unary gRPC with Golang – Part 2
+Favorite Sites
+AskPython
+CodeForGeek
+JournalDev
+LinuxForDevices
+
+Copyright © 2021 · GoLang Docs · GoLangDocs is part of JournalDev IT Services Private Limited
+
+Skip to content
+Godocs
+Home
+About Us
+Contact Us
+Privacy Policy
+5 Different Ways to Split String in GoLang
+
+String splitting is a task that is needed when we want to manipulate strings. When data comes in a long string, we may need to split it into the required pieces. One of the very common use case is splitting a CSV string into different values based on the delimiter. In this post, we will see what are the ways of splitting strings in Go.
+
+GoLang Split string using the separator functions
+There are many ways to split strings by a specific separator function in Go. Below are some of the easy ways of doing string splitting in GoLang.
+
+1. Split String using the split() function
+The strings package contains a function called split(), which can be used to split string efficiently. The method usage is shown below.
+
+
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This,is,a,delimited,string"
+	v := strings.Split(s, ",")
+	fmt.Println(v)     // [This is a delimited string]
+}
+2. GoLang String Splitting using the SplitN function
+The SplitN function of the string package takes three arguments. The main string, the separator, and the number of strings that will be created. Below we can see examples using that string SplitN function.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This.is.a.delimited.string"
+	v := strings.SplitN(s, ".", 5)
+	fmt.Println(v)     // [This is a delimited string]
+}
+3. String split using whitespace
+There is a function called Fields which will return a slice after separating using the whitespace. Here it is in action.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "This is a string containing whitespaces"
+	v := strings.Fields(s)
+	fmt.Println(v)     // [This is a string containing whitespaces]
+}
+4. String Split without Removing Delimiters
+The SplitAfter function can be used to retain the delimiters instead of removing them. Here is an example showing how to use that function.
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "String,with,delimiters."
+	v := strings.SplitAfter(s, ",") // It doesn't removes delimiters when splitting
+	fmt.Println(v)     // [String, with, delimiters.]
+}
+It can also be used to generate a slice of individual characters from a string, here is how.
+
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := "averylargeword"
+	v := strings.SplitAfter(s, "")
+	fmt.Println(v)     // [a v e r y l a r g e w o r d]
+}
+5. String split using the regexp
+Regular expressions can be used to split the string using the pattern of the delimiters. Here is an example of how one would go about it.
+
+package main
+
+import (
+	"fmt"
+	//"strings"
+	"regexp"
+)
+
+func main() {
+	s := "xyzxyzxyzxyzxyz"
+
+	t := regexp.MustCompile(`[y]`)  // backticks are used here to contain the expression
+
+	v := t.Split(s, -1)             // second arg -1 means no limits for the number of substrings
+	fmt.Println(v)     // [x zx zx zx zx z]
+}
+These are some of the best ways to split a string in Go programming language.
+
+
+Post navigation
+← Previous Post
+Next Post →
+Search for:
+Search …
+
+Recent Posts
+GoLang Byte Array to String
+Golang int64 to string conversion
+What is rune in GoLang?
+Golang – Using Gorilla Websockets
+Makefiles with Go
+Golang – Read JSON File
+Golang – Create your own Slack Bot
+Golang – Iterate over a map
+Golang reflect package
+Unary gRPC with Golang – Part 2
+Favorite Sites
+AskPython
+CodeForGeek
+JournalDev
+LinuxForDevices
+
+Copyright © 2021 · GoLang Docs · GoLangDocs is part of JournalDev IT Services Private Limited

@@ -1,6 +1,9 @@
 package hw03frequencyanalysis
 
 import (
+	"fmt"
+	"io/ioutil"
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -78,5 +81,54 @@ func TestTop10(t *testing.T) {
 			}
 			require.Equal(t, expected, Top10(text))
 		}
+	})
+}
+
+func TestTop10Text(t *testing.T) {
+	tests := []struct {
+		input    string
+		expected []string
+	}{
+		{
+			input:    "word word",
+			expected: []string{"word"},
+		},
+		{
+			input:    "      ",
+			expected: []string{},
+		},
+		{
+			input:    "\n\n\n\n\n\t\t\t\t",
+			expected: []string{},
+		},
+		{
+			input:    "1   1   1   5   5 5 55 55 ` ` ` ` ` ` ` ` ` `\n",
+			expected: []string{"`", "1", "5", "55"},
+		},
+	}
+
+	for _, tc := range tests {
+		tc := tc
+		t.Run(tc.input, func(t *testing.T) {
+			require.Equal(t, tc.expected, Top10(tc.input))
+		})
+	}
+}
+
+func TestTopLongtext(t *testing.T) {
+	f, err := os.Open("text.txt")
+	if err != nil {
+		fmt.Printf("Error os.Open %s", err)
+	}
+	defer f.Close()
+
+	text, err := ioutil.ReadAll(f)
+	if err != nil {
+		fmt.Printf("Error ioutil.ReadAll %s", err)
+	}
+
+	expected := []string{"the", "a", "is", "to", ":=", "of", "string", "//", "package", "String"}
+	t.Run("Long text", func(t *testing.T) {
+		require.Equal(t, expected, Top10(string(text)))
 	})
 }
